@@ -59,8 +59,9 @@ router.post("/", async (req, res) => {
     });
   }
 });
+
 // instruction: setup PUT /:id: Update a instructor by its _id
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const instructor_id = req.params.id;
     const name = req.body.name;

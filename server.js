@@ -20,7 +20,7 @@ app.use(corsHandler);
 
 // instruction: setup MongoDB Connection
 mongoose
-  .connect() // idk what to put in
+  .connect("mongodb://127.0.0.1:27017/cu6mocktest") // idk what to put in
   .then(() => {
     console.log("MongoDB connected");
   })
@@ -29,11 +29,11 @@ mongoose
   });
 
 // instruction: setup routes
-const instructorRouter = require("./routes/instructor");
-const courseRouter = require("./routes/course");
+const instructorRouter = require("./routes/instructors");
+const courseRouter = require("./routes/courses");
 
 app.use("/courses", courseRouter);
-app.use("instructors", instructorRouter);
+app.use("/instructors", instructorRouter);
 
 app.get("/", (req, res) => {
   res.send("Good luck!");
