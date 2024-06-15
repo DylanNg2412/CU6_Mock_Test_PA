@@ -1,0 +1,43 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+const app = express();
+const port = 5000;
+
+app.use(express.json());
+
+// instruction: setup cors
+const corsHandler = cors({
+  origin: "*",
+  methods: "GET,PUT,POST,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization"],
+  preflightContinue: true,
+  optionsSuccessStatus: 200,
+});
+
+app.use(corsHandler);
+
+// instruction: setup MongoDB Connection
+mongoose
+  .connect() // idk what to put in
+  .then(() => {
+    console.log("MongoDB connected");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+// instruction: setup routes
+const instructorRouter = require("./routes/instructor");
+const courseRouter = require("./routes/course");
+
+app.use("/courses", courseRouter);
+app.use("instructors", instructorRouter);
+
+app.get("/", (req, res) => {
+  res.send("Good luck!");
+});
+
+// Server listening
+app.listen(port, () => console.log(`Server started on port ${port}`));
