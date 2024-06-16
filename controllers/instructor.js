@@ -9,8 +9,8 @@ const getInstructors = async () => {
   }
 };
 
-const getInstructor = async (id) => {
-  const instructor = await Instructor.findById(id).populate("instructor");
+const getInstructor = async (_id) => {
+  const instructor = await Instructor.findById(_id);
   return instructor;
 };
 

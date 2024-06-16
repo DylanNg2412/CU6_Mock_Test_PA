@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const instructor = await getInstructor(req.params.id);
-    if (course) {
+    if (instructor) {
       res.status(200).send(instructor);
     } else {
       res.status(404).send("Instructor Not Found");

@@ -10,7 +10,7 @@ const getCourses = async () => {
 };
 
 const getCourse = async (id) => {
-  const course = await Course.findById(id).populate();
+  const course = await Course.findById(id).populate("instructor");
   return course;
 };
 
