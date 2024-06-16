@@ -15,12 +15,10 @@ const { Schema, model } = mongoose;
 
 const courseSchema = new Schema({
   title: { type: String, required: true },
-  instructor: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Instructor",
-    },
-  ],
+  instructor: {
+    type: Schema.Types.ObjectId,
+    ref: "Instructor",
+  },
   startDate: { type: Date },
   endDate: { type: Date },
   subject: { type: String },
